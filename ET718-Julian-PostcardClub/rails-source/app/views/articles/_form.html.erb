@@ -1,9 +1,0 @@
-<%= form_with model: article, class: "editor-form" do |form| %>
-  <% if article.errors.any? %><div class="form-errors"><strong>Please fix:</strong><ul><% article.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul></div><% end %>
-  <div class="field"><%= form.label :title, "Post title" %><%= form.text_field :title, required: true, maxlength: 160 %></div>
-  <div class="field"><%= form.label :region, "Region" %><%= form.select :region, Article::REGIONS, { prompt: "Choose one" }, { required: true } %></div>
-  <div class="field"><%= form.label :destination, "Destination or city" %><%= form.text_field :destination, required: true, placeholder: "City, country" %></div>
-<div class="field"><%= form.label :trip_status, "Trip status" %><%= form.select :trip_status, Article::STATUSES, { prompt: "Choose status" }, { required: true } %></div>
-  <div class="field"><%= form.label :body, "Your writing" %><%= form.text_area :body, rows: 12, required: true %></div>
-  <div class="form-actions"><%= form.submit (article.persisted? ? "Save changes" : "Publish post"), class: "button button-primary" %><%= link_to "Cancel", articles_path, class: "button button-outline" %></div>
-<% end %>
